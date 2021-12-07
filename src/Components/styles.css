@@ -1,0 +1,20 @@
+body{
+    margin:0px;
+    padding: 0% 5%;
+
+}
+.new-image{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    object-position: 0%;
+}
+
+.title-header{
+    display: flex;
+    flex-direction: row;
+}
+.title-header h1{
+    display: flex;
+    width: 60%;  
+}
