@@ -11,7 +11,7 @@ import new3 from '.Components/images/new3.jpg' */
 const data = { /* logo: logo ,*/ name: "El País", email: "contacto@elpais.es", phone: "+34 722 11 21   11", language: "Español"};
 
 const writer1 = {
-  name: "Miguel Jimenez",
+  name: "Miguel Jimenez", 
   location: "Madrid", 
   linkedin: "www.twitter.com" ,
   facebook:"www.facebook.com" , 
@@ -97,7 +97,7 @@ const news = [
 
 
 const navBarElements = [
-  {href: "", name: "Internacional"},
+  {href: "", name: ECONOMIA},
   {href: "", name: "Opinion"},
   {href: "", name: "España"},
   {href: "", name: "Economia"},
@@ -167,12 +167,11 @@ class Newspaper extends React.Component{
     if (this.state.isNewOpen === true) {
       myRender = <div>
        <Header />
-       <New news={news[0]}/>
        <Footer/>
       </div>
     } else {
       myRender=  <div><Header />
-      <Board />
+      <Board news={news}/>
       <Footer/>
       </div>
     }
@@ -185,10 +184,13 @@ class Newspaper extends React.Component{
 class Board extends React.Component{
   constructor(props){
     super(props)
+    this.state = {...props}
   }
     render(){
+      let newsItem = this.state.elements.map((element) =>
+        <New element={element}/>);
       return <div>
-      <New news={news}/>
+        {newsItem}
     </div>
     }
   }
@@ -198,23 +200,21 @@ class New extends React.Component{
   constructor(props){
     super(props)
     this.openNew = this.openNew.bind(this)
-    this.state = {...props, isNewOpen: true}
+    this.state = {...this.props.element}
   }
  
   openNew(){
     this.setState(state =>(
-      {isNewOpen: !state.isNewOpen}
+        {isNewOpen: !state.isNewOpen}
     ))
   }
   render() {
-      let elementNew = this.props.news.map((element) => <div onClick={this.openNew}>
-          <img src={element.newsImage} className="new-image"></img>
-          <h1>{element.title}</h1>
-          <h4>{element.subtitle}</h4>
-          <p>{element.content}</p>
-      </div>)
+            
   return <div>
-      {elementNew}
+      <img src={this.element.newsImage} alt ="other form of visual" className="new-image"></img>
+          <h1>{this.element.title}</h1>
+          <h4>{this.element.subtitle}</h4>
+          <p>{this.element.content}</p>
       </div>
   }
 }
