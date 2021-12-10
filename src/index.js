@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Components/styles.css';
-import new1 from './Components/images/new1.jpg'
+import new1 from './Components/images/new1.jpg';
+import new2 from '.Components/images/new2.webp';
+import new3 from '.Components/images/new3.jpg';
+import logo from '.Components/images/elpais.svg'
 
-/*import new2 from '.Components/images/new2.webp'
-import new3 from '.Components/images/new3.jpg' */
-/* import logo from '.Components/images/elpais.svg' */
 
-
-const data = { /* logo: logo ,*/ name: "El País", email: "contacto@elpais.es", phone: "+34 722 11 21   11", language: "Español"};
+const data = {logo: logo, name: "El País", email: "contacto@elpais.es", phone: "+34 722 11 21   11", language: "Español"};
 
 const writer1 = {
   name: "Miguel Jimenez", 
@@ -42,7 +41,7 @@ const socialMedia=[
 
 const INTERNACIONAL = 1;
 const OPINION = 2;
-const ESPAÑA = 3;
+const ESPANA = 3;
 const ECONOMIA = 4;
 const SOCIEDAD = 5;
 const EDUCACION = 6;
@@ -57,7 +56,7 @@ const GENTE = 14;
 const ELPAISSEMANAL = 15;
 
 
-const categories = [INTERNACIONAL, OPINION, ESPAÑA,ECONOMIA, SOCIEDAD, EDUCACION, MEDIOAMBIENTE, CIENCIA, CULTURA, BABELIA, DEPORTES, TECNOLOGIA, TELEVISION, GENTE, ELPAISSEMANAL]
+const categories = [INTERNACIONAL, OPINION, ESPANA,ECONOMIA, SOCIEDAD, EDUCACION, MEDIOAMBIENTE, CIENCIA, CULTURA, BABELIA, DEPORTES, TECNOLOGIA, TELEVISION, GENTE, ELPAISSEMANAL]
  
 const news = [
       {title: "Diego Ávalos, jefe de Netflix en España: “Nos interesa el talento en cualquier idioma",
@@ -73,7 +72,7 @@ const news = [
 
       {title: "Hacienda recurre la sentencia que le obliga a devolver más de 1.000 millones a Telefónica",
       subtitle: "El fisco acude al Supremo y consigue de momento demorar el desembolso",
-      /* newsImage: new2, */
+      newsImage: new2,
       writer: writer2.name,
       location: writer2.location,
       category: INTERNACIONAL,
@@ -84,7 +83,7 @@ const news = [
      
       {title: "Marta Ortega, heredera del imperio de Zara y nueva mujer fuerte del Ibex",
       subtitle: "La hija del fundador de Inditex, que se convertirá en presidenta del grupo en abril, ha sido clave en el desarrollo de las colecciones y la imagen de la empresa",
-      /* newsImage: new3, */
+      newsImage: new3,
       writer: writer3.name,
       location: writer3.location,
       category: SOCIEDAD,
@@ -141,7 +140,7 @@ class NavBar extends React.Component{
   }
   render(){
       return <nav>
-           <NavBarElement elements={categories} />
+           <NavBarElement elements={navBarElements} />
     </nav> 
   }
 }
@@ -161,17 +160,24 @@ class Newspaper extends React.Component{
   constructor(props) {
     super(props)
     this.state = {isNewOpen: false}
+    this.openNews = this.openNews.bind(this)
   }
+
+  openNews(){
+    this.setState(state => ({isNewOpen : !state.isNewOpen})) 
+  }
+
   render(){
     let myRender = undefined
     if (this.state.isNewOpen === true) {
       myRender = <div>
        <Header />
+       <New/>
        <Footer/>
       </div>
     } else {
       myRender=  <div><Header />
-      <Board news={news}/>
+      <Board news={news} openNews={this.openNews}/>  /* invoca la 167 para terminar de elevar el estado */
       <Footer/>
       </div>
     }
@@ -184,37 +190,43 @@ class Newspaper extends React.Component{
 class Board extends React.Component{
   constructor(props){
     super(props)
-    this.state = {...props}
+    this.state={...news}
+    this.openNews =this.openNews.bind(this);
+    
   }
+  openNews(){
+    this.props.openNews()
+  }
+ 
+ 
     render(){
-      let newsItem = this.state.elements.map((element) =>
-        <New element={element}/>);
+      let newsItem = this.props.news.map((element) =><New elements={element} openNews={this.openNews} />);  /* pasar via propiedades por la linea 199 */
       return <div>
         {newsItem}
     </div>
     }
   }
 
-
 class New extends React.Component{
   constructor(props){
     super(props)
-    this.openNew = this.openNew.bind(this)
-    this.state = {...this.props.element}
+    this.openNews = this.openNews.bind(this)
+    this.state = {...this.props.elements, isNewOpen: false}
   }
  
-  openNew(){
+  openNews(){
     this.setState(state =>(
         {isNewOpen: !state.isNewOpen}
-    ))
+    ));
+    this.props.openNews();  /* luego esto bindea openNews como propiedad a a la linea 204 */
   }
   render() {
             
-  return <div>
-      <img src={this.element.newsImage} alt ="other form of visual" className="new-image"></img>
-          <h1>{this.element.title}</h1>
-          <h4>{this.element.subtitle}</h4>
-          <p>{this.element.content}</p>
+  return <div onClick={this.openNews} >  /* esto va a bindiar con la linea 218 */
+      <img src={this.state.newsImage} alt ="other form of visual" className="new-image"></img>
+          <h1>{this.state.title}</h1>
+          <h4>{this.state.subtitle}</h4>
+          <p>{this.state.content}</p>
       </div>
   }
 }
