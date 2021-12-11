@@ -18,3 +18,19 @@ body{
     display: flex;
     width: 60%;  
 }
+nav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: aqua;
+}
+.navbarelement{
+    padding: 5px;
+    margin: 2px;
+    background-color: bisque;
+    width: min-content;
+}
+.new{
+    background-color:burlywood
+}
+   
