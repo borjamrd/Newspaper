@@ -9,6 +9,9 @@ body{
     object-fit: cover;
     object-position: 0%;
 }
+.logo{
+    height: 100px;
+}
 
 .title-header{
     display: flex;
