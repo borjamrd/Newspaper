@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import {INTERNACIONAL, OPINION, ESPANA, SOCIEDAD, ECONOMIA, EDUCACION, MEDIOAMBIENTE, CIENCIA, CULTURA, BABELIA, DEPORTES, TECNOLOGIA, TELEVISION, GENTE, ELPAISSEMANAL} from '../data';
-import { data,news, navBarElements, writer1,writer2,writer3, socialMedia } from '../data';
+import { data, navBarElements, socialMedia } from '../data';
 export class Header extends React.Component{
     constructor(props) {
       super(props)

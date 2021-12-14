@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { New } from './New';
-import { data, news, navBarElements, writer1,writer2,writer3, socialMedia } from './data';
+import {news} from './data';
 
 
 export class Board extends React.Component{

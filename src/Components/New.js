@@ -16,20 +16,28 @@ export class New extends React.Component{
     
     render() {
       let myButton, content = undefined;
-    /*   let newcontent = this.state.content;
-      let arraycontent = newcontent.split(' ');
+     /*  let newcontent = this.state.content;
+      let arraycontent = newcontent.split(' ', 20);
       let cuttedarray = arraycontent.slice(0, 20);
-      let excerpt = String(cuttedarray); */
-  
-    
-      if (this.state.isNewOpen === false){
-        myButton = <div>
-          <button onClick={this.openNews} > ATRÁS</button>
-        </div>
-      }else{
+      let excerpt = cuttedarray.join(' ');  
+     */
+
+      if (this.props.isNewOpen === true){
+
+        /* content = <div>
+          <summary>{excerpt}</summary>
+        </div> */
+
         myButton= <div>
+          <button onClick={this.openNews} > ATRAS</button>
+          </div>     
+      }else{
+        myButton = <div>
           <button onClick={this.openNews} > ABRIR NOTICIA</button>
-          </div>
+        </div>
+        content = <div>
+          <p>{this.state.content}</p>
+      </div>
     }
           
     return <div className='new'>
@@ -37,6 +45,7 @@ export class New extends React.Component{
             <h1>{this.state.title}</h1>
             <h4>{this.state.subtitle}</h4>
             <p>{this.state.content}</p>
+            {content}
             {myButton}
         </div>
     }

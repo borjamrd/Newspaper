@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './Components/styles.css';
-import { data, news, navBarElements, writer1,writer2,writer3, socialMedia } from './Components/data';
-import {INTERNACIONAL, OPINION, ESPANA, SOCIEDAD, ECONOMIA, EDUCACION, MEDIOAMBIENTE, CIENCIA, CULTURA, BABELIA, DEPORTES, TECNOLOGIA, TELEVISION, GENTE, ELPAISSEMANAL} from './Components/data';
+import { data, news } from './Components/data';
 import { Board } from './Components/Board';
 import { Header, Footer } from './Components/header/Header and Footer';
 import { New } from './Components/New';
+import {axios} from 'axios';
 
 
 
@@ -30,8 +30,9 @@ class Newspaper extends React.Component{
       myRender = <div>
        <Header />
        <h1>{data.name}</h1>
-       <New openNews={this.openNews} />
+       <New openNews={this.openNews} isNewOpen={true}/>
        <Footer/>
+
       </div>
     } else {
       myRender=  <div><Header />
