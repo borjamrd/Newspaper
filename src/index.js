@@ -5,7 +5,7 @@ import { data, news } from './Components/data';
 import { Board } from './Components/Board';
 import { Header, Footer } from './Components/header/Header and Footer';
 import { New } from './Components/New';
-import {axios} from 'axios';
+import axios from 'axios';
 
 
 
@@ -18,6 +18,17 @@ class Newspaper extends React.Component{
     this.openNews = this.openNews.bind(this)
     
   }
+
+  async componentDidMount(){
+    const resp = await axios.get('https://newsapi.org/v2/everything?q=Apple&from=2021-12-16&sortBy=popularity&apiKey=de446f3010c5477e99bfbee8a890678b')
+    // console.log(resp.data)
+    /* let data= JSON.stringify({
+      
+    }) */
+
+  }
+
+
 
   openNews(){
     this.setState(state => ({isNewOpen : !state.isNewOpen})) 
