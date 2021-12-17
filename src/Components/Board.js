@@ -1,13 +1,12 @@
 
 import React, { useState } from 'react';
 import { New } from './New';
-import {news} from './data';
 
 
 export class Board extends React.Component{
     constructor(props){
       super(props)
-      this.state={...news, isNewOpen: true}
+      this.state={ isNewOpen: true}
       this.openNews =this.openNews.bind(this);
       
     }
@@ -15,10 +14,9 @@ export class Board extends React.Component{
     openNews(){
       this.props.openNews()
     }
-      render(){
-        let newsItem = this.props.news.map((element) =><New elements={element} openNews={this.openNews} />);  /* pasar via propiedades por la linea 199 */
+      render(){/* pasar via propiedades por la linea 199 */
         return <div>
-          {newsItem}
+        <New  openNews={this.openNews} />
       </div>
       }
     }

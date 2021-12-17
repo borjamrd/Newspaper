@@ -38,7 +38,7 @@ class Newspaper extends React.Component{
     } else {
       myRender=  <div><Header />
       <h1>{data.name}</h1>
-      <Board  news={news} openNews={this.openNews}/>
+      <Board openNews={this.openNews}/>
       <Footer/>
       </div>
     }

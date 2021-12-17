@@ -54,7 +54,7 @@ export class New extends React.Component{
           <button onClick={this.openNews} > ABRIR NOTICIA</button>
         </div>
         contents = <div>
-          <p>{this.state.elements.content} mierda</p>
+          <p>{this.state.elements.content}</p>
       </div>
     }
 
