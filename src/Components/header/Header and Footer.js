@@ -11,12 +11,12 @@ export class Header extends React.Component{
       return <div className="header">
         <div className="title-header">
           <img src={data.logo} className='logo'></img>
-          <ul>
+          <ul className='contact'>
             <li>{data.email}</li>
             <li>{data.phone}</li>
           </ul>
         </div>
-        <NavBar className='navbar' elements={navBarElements}/>
+        <NavBar elements={navBarElements}/>
       </div>
     }
   }
@@ -28,7 +28,7 @@ export class Header extends React.Component{
     }
     render(){
       let navBar = this.props.elements.map((element) => <div className='navbarelement'><a href ={element.href}>{element.name}</a></div>)
-        return <nav>
+        return <nav className='navbar'>
              {navBar}
       </nav> 
     }

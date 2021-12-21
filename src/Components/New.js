@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { data, news, navBarElements, writer1,writer2,writer3, socialMedia } from './data';
 import axios from 'axios';
 
 export class New extends React.Component{
@@ -14,9 +13,9 @@ export class New extends React.Component{
     }
 
     async componentDidMount(){
-      let k = await this.loadInfo()
-      console.log(k)
-      this.setState({elements: k})
+      let n = await this.loadInfo()
+      console.log(n)
+      this.setState({elements: n})
       
     }
     async loadInfo (){
@@ -28,12 +27,13 @@ export class New extends React.Component{
 
   
     openNews(){
+
       this.props.openNews();  /* luego esto bindea openNews como propiedad a a la linea 204 */
-      
+
     }
     
     render() {
-      let myButton, contents = undefined;
+      let myButton = undefined;
      /*  let newcontent = this.state.content;
       let arraycontent = newcontent.split(' ', 20);
       let cuttedarray = arraycontent.slice(0, 20);
@@ -42,28 +42,26 @@ export class New extends React.Component{
 
       if (this.props.isNewOpen === true){
 
-        /* content = <div>
+       /* content = <div>
           <summary>{excerpt}</summary>
         </div> */
-
+        
         myButton= <div>
           <button onClick={this.openNews} > ATRAS</button>
           </div>     
       }else{
+          
         myButton = <div>
           <button onClick={this.openNews} > ABRIR NOTICIA</button>
         </div>
-        contents = <div>
-          <p>{this.state.elements.content}</p>
-      </div>
+       
     }
 
     let newsArticle= this.state.elements.map((article)=> <div className='new'>
-      <img src={article.url}  className="new-image"></img>
           <h1>{article.title}</h1>
           <h4>{article.description}</h4>
+          <img src={article.urlToImage} height="150px" width="200px" ></img>
           <p>{article.content}</p>
-          {contents}
           {myButton}
       </div>)
           

@@ -8,9 +8,6 @@ import { New } from './Components/New';
 import axios from 'axios';
 
 
-
-
-
 class Newspaper extends React.Component{
   constructor(props) {
     super(props)
@@ -31,14 +28,14 @@ class Newspaper extends React.Component{
       myRender = <div>
        <Header />
        <h1>{data.name}</h1>
-       <New openNews={this.openNews} isNewOpen={true}/>
+       <New openNews={this.openNews} isNewOpen={true} />
        <Footer/>
 
       </div>
     } else {
       myRender=  <div><Header />
       <h1>{data.name}</h1>
-      <Board openNews={this.openNews}/>
+      <Board openNews={this.openNews} />
       <Footer/>
       </div>
     }

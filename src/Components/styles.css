@@ -11,29 +11,57 @@ body{
 }
 .logo{
     height: 100px;
+    width: max-content;
+    align-self: center;
+    
 }
 
 .title-header{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+ 
 }
 .title-header h1{
     display: flex;
     width: 60%;  
 }
+.contact{
+    align-self: center;
+    text-decoration: none;
+}
+.contact{
+    list-style: none;
+    margin-left: -35px;
+    margin-top: -35px;
+}
 nav{
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: aqua;
+    justify-content: center;
+}
+.navbar{
+    display: flex;
+    padding: auto;
+    justify-content: center;
+    
 }
 .navbarelement{
     padding: 5px;
     margin: 2px;
-    background-color: bisque;
     width: min-content;
+ 
+}
+
+.board{
+    display: grid;
+    grid-template-columns: 50% 50%;
+
 }
 .new{
-    background-color:burlywood
+    display: grid;
+    border:1px solid black;
+    margin: 2%;
+    padding:3%;
 }
    

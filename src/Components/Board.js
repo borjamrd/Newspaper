@@ -15,7 +15,7 @@ export class Board extends React.Component{
       this.props.openNews()
     }
       render(){/* pasar via propiedades por la linea 199 */
-        return <div>
+        return <div className='board'>
         <New  openNews={this.openNews} />
       </div>
       }
