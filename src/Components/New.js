@@ -8,7 +8,7 @@ export class New extends React.Component{
       this.state = {
         elements: [], 
         onlyExcerpt: true, 
-        isNewOpen: false}
+        isNewOpen: true}
   
     }
 
